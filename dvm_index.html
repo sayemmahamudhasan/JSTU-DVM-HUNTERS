@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HATU DVM HUNTERS</title>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Bangla&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1a6b2f;
+    --gold: #c9a84c;
+    --dark: #0d1f14;
+    --light: #f0f7f2;
+    --red: #b82c2c;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--dark);
+    color: var(--light);
+    font-family: 'Tiro Bangla', serif;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: linear-gradient(135deg, #0d1f14 0%, #1a3d24 50%, #0d1f14 100%);
+    border-bottom: 3px solid var(--gold);
+    padding: 30px 20px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 60%);
+    animation: pulse 4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 1; }
+  }
+  .site-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(28px, 6vw, 52px);
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-shadow: 0 0 30px rgba(201,168,76,0.4);
+    position: relative;
+    z-index: 1;
+  }
+  .site-subtitle {
+    font-size: clamp(13px, 2.5vw, 17px);
+    color: #9ecfaa;
+    margin-top: 8px;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+  }
+  .badge {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    font-size: 12px;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 1px;
+    animation: blink 2s ease-in-out infinite;
+    position: relative;
+    z-index: 1;
+  }
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  /* NOTICE BOX */
+  .notice {
+    background: linear-gradient(135deg, #1e3a28, #162b1e);
+    border: 1px solid var(--gold);
+    border-left: 5px solid var(--gold);
+    margin: 20px auto;
+    max-width: 900px;
+    padding: 18px 22px;
+    border-radius: 6px;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #d4edda;
+  }
+  .notice strong { color: var(--gold); }
+
+  /* MAIN */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 10px 16px 60px;
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 36px;
+  }
+  .section-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gold);
+    border-bottom: 1px solid #2a5c38;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title span { font-size: 22px; }
+
+  /* BUTTONS GRID */
+  .btn-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+  }
+
+  .mail-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #1a3d24, #122b1a);
+    border: 1px solid #2e6e3e;
+    border-radius: 8px;
+    padding: 14px 18px;
+    color: var(--light);
+    text-decoration: none;
+    font-family: 'Tiro Bangla', serif;
+    font-size: 14px;
+    line-height: 1.5;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .mail-btn::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 4px; height: 100%;
+    background: var(--gold);
+    transform: scaleY(0);
+    transition: transform 0.2s ease;
+  }
+  .mail-btn:hover {
+    background: linear-gradient(135deg, #234d2e, #1a3d24);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    color: white;
+  }
+  .mail-btn:hover::before { transform: scaleY(1); }
+  .mail-btn:active { transform: translateY(0); }
+
+  .mail-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+  }
+  .mail-info { flex: 1; }
+  .mail-label {
+    font-weight: bold;
+    color: #9ecfaa;
+    font-size: 13px;
+  }
+  .mail-name {
+    color: white;
+    font-size: 15px;
+    margin-top: 2px;
+  }
+  .mail-count {
+    font-size: 11px;
+    color: var(--gold);
+    margin-top: 2px;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 24px;
+    border-top: 1px solid #2a5c38;
+    color: #5a8a68;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  footer strong { color: var(--gold); }
+
+  @media (max-width: 500px) {
+    .btn-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="site-title">🐾 HATU DVM HUNTERS</div>
+  <div class="site-subtitle">
+    যশোর বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয় — ঝিনাইদহ ক্যাম্পাস<br>
+    DVM ভর্তি পরীক্ষা ২০২৫-২০২৬ আয়োজনের দাবিতে ইমেইল ক্যাম্পেইন
+  </div>
+  <div class="badge">⚡ ONE CLICK EMAIL — SEND NOW</div>
+</header>
+
+<div class="notice">
+  <strong>📌 কীভাবে ব্যবহার করবেন:</strong> নিচের যেকোনো বাটনে ক্লিক করুন → আপনার Gmail অ্যাপ/ব্রাউজার খুলে যাবে → বিষয় ও চিঠি অটো বসে যাবে → শুধু <strong>Send</strong> চাপুন। প্রতিটি বাটনে ক্লিক করে সব জায়গায় পাঠান। <strong>আমাদের ন্যায্য দাবি প্রতিষ্ঠিত হোক।</strong>
+</div>
+
+<main>
+
+  <!-- UGC SECTION -->
+  <div class="section">
+    <div class="section-title"><span>🏛️</span> বিশ্ববিদ্যালয় মঞ্জুরি কমিশন (UGC)</div>
+    <div class="btn-grid">
+
+      <a class="mail-btn" href="mailto:tanzim.member@ugc.gov.bd,tanzim.ir@du.ac.bd,jahanger@ugc.gov.bd,shibananda@ugc.gov.bd,mmhossen@gmail.com,khanjahanali89@gmail.com,sohel.ugc88@gmail.com,shahjahan@ugc.gov.bd,asif@ugc.gov.bd?subject=JUST%20DVM%20ভর্তি%20পরীক্ষা%20আয়োজনের%20আবেদন%20-%20HSTU%20ঝিনাইদহ%20ক্যাম্পাস&body=মহোদয়%2C%0A%0Aআমরা%20যশোর%20বিজ্ঞান%20ও%20প্রযুক্তি%20বিশ্ববিদ্যালয়ের%20(JUST)%20ঝিনাইদহ%20ক্যাম্পাসের%20DVM%20(Doctor%20of%20Veterinary%20Medicine)%20কোর্সের%20ভর্তিচ্ছু%20শিক্ষার্থীবৃন্দ।%0A%0Aআমরা%20বিনয়ের%20সাথে%20জানাতে%20চাই%20যে%2C%202০২৫-২০২৬%20শিক্ষাবর্ষে%20DVM%20ভর্তি%20পরীক্ষা%20এখনো%20আয়োজন%20করা%20হয়নি।%20আমাদের%20মধ্যে%20অনেকেই%20দ্বিতীয়বার%20(২০২৪-২৫%20সেশন)%20সুযোগ%20নিচ্ছেন%20এবং%20এটিই%20তাদের%20শেষ%20সুযোগ।%0A%0Aআমরা%20যেকোনো%20বিলম্ব%20মেনে%20নিতে%20রাজি%20আছি।%20দেরিতে%20হলেও%20পরীক্ষা%20নেওয়া%20হোক%20—%20এটুকুই%20আমাদের%20একমাত্র%20প্রার্থনা।%0A%0Aআপনার%20দপ্তর%20থেকে%20প্রয়োজনীয়%20পদক্ষেপ%20নেওয়ার%20জন্য%20বিনীত%20অনুরোধ%20জানাচ্ছি।%0A%0Aবিনীত%20নিবেদক%2C%0AHATU%20DVM%20HUNTERS%0Aযশোর%20বিজ্ঞান%20ও%20প্রযুক্তি%20বিশ্ববিদ্যালয়%20ভর্তিচ্ছু%20শিক্ষার্থীবৃন্দ">
+        <span class="mail-icon">📧</span>
+        <div class="mail-info">
+          <div class="mail-label">UGC — গ্রুপ ১</div>
+          <div class="mail-name">সদস্য দপ্তর + পরিচালক বিভাগ</div>
+          <div class="mail-count">৯টি ইমেইল</div>
+        </div>
+      </a>
+
+      <a class="mail-btn" href="mailto:asifsiddiquebzs@gmail.com,engr.mosharaf2@gmail.com,ikramul.islam.apu@gmail.com,kofil.ugc@gmail.com,ugcgmkamal@gmail.com,lokmanhossain1991@gmail.com,mahmud_2010@yahoo.com,sultan@ugc.gov.bd,director_privateuniv@ugc.gov.bd?subject=JUST%20DVM%20ভর্তি%20পরীক্ষা%20আয়োজনের%20আবেদন%20-%20HSTU%20ঝিনাইদহ%20ক্যাম্পাস&body=মহোদয়%2C%0A%0Aআমরা%20যশোর%20বিজ্ঞান%20ও%20প্রযুক্তি%20বিশ্ববিদ্যালয়ের%20(JUST)%20ঝিনাইদহ%20ক্যাম্পাসের%20DVM%20(Doctor%20of%20Veterinary%20Medicine)%20কোর্সের%20ভর্তিচ্ছু%20শিক্ষার্থীবৃন্দ।%0A%0Aআমরা%20বিনয়ের%20সাথে%20জানাতে%20চাই%20যে%2C%202০২৫-২০২৬%20শিক্ষাবর্ষে%20DVM%20ভর্তি%20পরীক্ষা%20এখনো%20আয়োজন%20করা%20হয়নি।%20আমাদের%20মধ্যে%20অনেকেই%20দ্বিতীয়বার%20(২০২৪-২৫%20সেশন)%20সুযোগ%20নিচ্ছেন%20এবং%20এটিই%20তাদের%20শেষ%20সুযোগ।%0A%0Aআমরা%20যেকোনো%20বিলম্ব%20মেনে%20নিতে%20রাজি%20আছি।%20দেরিতে%20হলেও%20পরীক্ষা%20নেওয়া%20হোক%20—%20এটুকুই%20আমাদের%20একমাত্র%20প্রার্থনা।%0A%0Aআপনার%20দপ্তর%20থেকে%20প্রয়োজনীয়%20পদক্ষেপ%20নেওয়ার%20জন্য%20বিনীত%20অনুরোধ%20জানাচ্ছি।%0A%0Aবিনীত%20নিবেদক%2C%0AHATU%20DVM%20HUNTERS%0Aযশোর%20বিজ্ঞান%20ও%20প্রযুক্তি%20বিশ্ববিদ্যালয়%20ভর্তিচ্ছু%20শিক্ষার্থীবৃন্দ">
+        <span class="mail-icon">📧</span>
+        <div class="mail-info">
+          <div class="mail-label">UGC — গ্রুপ ২</div>
+          <div class="mail-name">অতিরিক্ত পরিচালক বিভাগ</div>
+          <div class="mail-count">৯টি ইমেইল</div>
+        </div>
+      </a>
+
+      <a class="mail-btn" href="mailto:smahmud_ugc@yahoo.com,nasima@ugc.gov.bd,nasrinakhterugc@gmail.com,sarkermoazzem@yahoo.com,mpatwaryugc@yahoo.com,kamrulugc@gmail.com,sohelranaugc@gmail.com,parvezugc@gmail.com,shahjadishajadi25@gmail.com?subject=JUST%20DVM%20ভর্তি%20পরীক্ষা%20আয়োজনের%20আবেদন%20-%20HSTU%20ঝিনাইদহ%20ক্যাম্পাস&body=মহোদয়%2C%0A%0Aআমরা%20যশোর%20বিজ্ঞান%20ও%20প্রযুক্তি%20বিশ্ববিদ্যালয়ের%20(JUST)%20ঝিনাইদহ%20ক্যাম্পাসের%20DVM%20(Doctor%20of%20Veterinary%20Medicine)%20কোর্সের%20ভর্তিচ্ছু%20শিক্ষার্থীবৃন্দ।%0A%0Aআমরা%20বিনয়ের%20সাথে%20জানাতে%20চাই%20যে%2C%202০২৫-২০২৬%20শিক্ষাবর্ষে%20DVM%20ভর্তি%20পরীক্ষা%20এখনো%20আয়োজন%20করা%20হয়নি।%20আমাদের%20মধ্যে%20অনেকেই%20দ্বিতীয়বার%20(২০২৪-২৫%20সেশন)%20সুযোগ%20নিচ্ছেন%20এবং%20এটিই%20তাদের%20শেষ%20সুযোগ।%0A%0Aআমরা%20যেকোনো%20বিলম্ব%20মেনে%20নিতে%20রাজি%20আছি।%20দেরিতে%20হলেও%20পরীক্ষা%20নেওয়া%20হোক%20—%20এটুকুই%20আমাদের%20একমাত্র%20প্রার্থনা।%0A%0Aআপনার%20দপ্তর%20থেকে%20প্রয়োজনীয়%20পদক্ষেপ%20নেওয়ার%20জন্য%20বিনীত%20অনুরোধ%20জানাচ্ছি।%0A%0Aবিনীত%20নিবেদক%2C%0AHATU%20DVM%20HUNTERS%0Aযশোর%20বিজ্ঞান%20ও%20প্রযুক্তি%20বিশ্ববিদ্যালয়%20ভর্তিচ্ছু%20শিক্ষার্থীবৃন্দ">
+        <span class="mail-icon">📧</span>
+        <div class="mail-info">
+          <div class="mail-label">UGC — গ্রুপ ৩</div>
+          <div class="mail-name">উপ-পরিচালক ও সহকারী পরিচালক</div>
+          <div class="mail-count">৯টি ইমেইল</div>
+        </div>
+      </a>
+
+      <a class="mail-btn" href="mailto:aminul@ugc.gov.bd,suraiya_farhana@yahoo.com,rukshanaugc@yahoo.com,rehan_uddin2020@yahoo.com,liton555@gmail.com,maksudur@ugc.gov.bd,mohibulugc@gmail.com,gmostafa_ugc@hotmail.com,amirulugc15@gmail.com?subject=JUST%20DVM%20ভর্তি%20পরীক্ষা%20আয়োজনের%20আবেদন%20-%20HSTU%20ঝিনাইদহ%20ক্যাম্পাস&body=মহোদয়%2C%0A%0Aআমরা%20যশোর%20বিজ্ঞান%20ও%20প্রযুক্তি%20বিশ্ববিদ্যালয়ের%20(JUST)%20ঝিনাইদহ%20ক্যাম্পাসের%20DVM%20(Doctor%20of%20Veterinary%20Medicine)%20কোর্সের%20ভর্তিচ্ছু%20শিক্ষার্থীবৃন্দ।%0A%0Aআমরা%20বিনয়ের%20সাথে%20জানাতে%20চাই%20যে%2C%202০২৫-২০২৬%20শিক্ষাবর্ষে%20DVM%20ভর্তি%20পরীক্ষা%20এখনো%20আয়োজন%20করা%20হয়নি।%20আমাদের%20মধ্যে%20অনেকেই%20দ্বিতীয়বার%20(২০২৪-২৫%20সেশন)%20সুযোগ%20নিচ্ছেন%20এবং%20এটিই%20তাদের%20শেষ%20সুযোগ।%0A%0Aআমরা%20যেকোনো%20বিলম্ব%20মেনে%20নিতে%20রাজি%20আছি।%20দেরিতে%20হলেও%20পরীক্ষা%20নেওয়া%20হোক%20—%20এটুকুই%20আমাদের%20একমাত্র%20প্রার্থনা।%0A%0Aআপনার%20দপ্তর%20থেকে%20প্রয়োজনীয়%20পদক্ষেপ%20নেওয়ার%20জন্য%20বিনীত%20অনুরোধ%20জানাচ্ছি।%0A%0Aবিনীত%20নিবেদক%2C%0AHATU%20DVM%20HUNTERS%0Aযশোর%20বিজ্ঞান%20ও%20প্রযুক্তি%20বিশ্ববিদ্যালয়%20ভর্তিচ্ছু%20শিক্ষার্থীবৃন্দ">
+        <span class="mail-icon">📧</span>
+        <div class="mail-info">
+          <div class="mail-label">UGC — গ্রুপ ৪</div>
+          <div class="mail-name">পরিচালক (পাবলিক ও প্রাইভেট বিশ্ববিদ্যালয়)</div>
+          <div class="mail-count">৯টি ইমেইল</div>
+        </div>
+      </a>
+
+      <a class="mail-btn" href="mailto:labibamohsin@yahoo.com,amehasina@gmail.com,muhibbullah.pad14@gmail.com,rrmukti@yahoo.com,mauliazad1979@gmail.com,imran.dumcj@gmail.com,farid.du08@gmail.com,alomgirugc@yahoo.com,aabugc@gmail.com?subject=JUST%20DVM%20ভর্তি%20পরীক্ষা%20আয়োজনের%20আবেদন%20-%20HSTU%20ঝিনাইদহ%20ক্যাম্পাস&body=মহোদয়%2C%0A%0Aআমরা%20যশোর%20বিজ্ঞান%20ও%20প্রযুক্তি%20বিশ্ববিদ্যালয়ের%20(JUST)%20ঝিনাইদহ%20ক্যাম্পাসের%20DVM%20(Doctor%20of%20Veterinary%20Medicine)%20কোর্সের%20ভর্তিচ্ছু%20শিক্ষার্থীবৃন্দ।%0A%0Aআমরা%20বিনয়ের%20সাথে%20জানাতে%20চাই%20যে%2C%202০২৫-২০২৬%20শিক্ষাবর্ষে%20DVM%20ভর্তি%20পরীক্ষা%20এখনো%20আয়োজন%20করা%20হয়নি।%20আমাদের%20মধ্যে%20অনেকেই%20দ্বিতীয়বার%20(২০২৪-২৫%20সেশন)%20সুযোগ%20নিচ্ছেন%20এবং%20এটিই%20তাদের%20শেষ%20সুযোগ।%0A%0Aআমরা%20যেকোনো%20বিলম্ব%20মেনে%20নিতে%20রাজি%20আছি।%20দেরিতে%20হলেও%20পরীক্ষা%20নেওয়া%20হোক%20—%20এটুকুই%20আমাদের%20একমাত্র%20প্রার্থনা।%0A%0Aআপনার%20দপ্তর%20থেকে%20প্রয়োজনীয়%20পদক্ষেপ%20নেওয়ার%20জন্য%20বিনীত%20অনুরোধ%20জানাচ্ছি।%0A%0Aবিনীত%20নিবেদক%2C%0AHATU%20DVM%20HUNTERS%0Aযশোর%20বিজ্ঞান%20ও%20প্রযুক্তি%20বিশ্ববিদ্যালয়%20ভর্তিচ্ছু%20শিক্ষার্থীবৃন্দ">
+        <span class="mail-icon">📧</span>
+        <div class="mail-info">
+          <div class="mail-label">UGC — গ্রুপ ৫</div>
+          <div class="mail-name">সিনিয়র সহকারী পরিচালক দল</div>
+          <div class="mail-count">৯টি ইমেইল</div>
+        </div>
+      </a>
+
+      <a class="mail-btn" href="mailto:jesminugc@yahoo.com,jesmin@ugc.gov.bd,mamunugcbd@gmail.com,rizveeratul1990@gmail.com,nahidsultana.ugc@gmail.com,mannanugc@yahoo.com,jahidtutul@yahoo.com,fakhrul@ugc.gov.bd,secretary@ugc.gov.bd?subject=JUST%20DVM%20ভর্তি%20পরীক্ষা%20আয়োজনের%20আবেদন%20-%20HSTU%20ঝিনাইদহ%20ক্যাম্পাস&body=মহোদয়%2C%0A%0Aআমরা%20যশোর%20বিজ্ঞান%20ও%20প্রযুক্তি%20বিশ্ববিদ্যালয়ের%20(JUST)%20ঝিনাইদহ%20ক্যাম্পাসের%20DVM%20(Doctor%20of%20Veterinary%20Medicine)%20কোর্সের%20ভর্তিচ্ছু%20শিক্ষার্থীবৃন্দ।%0A%0Aআমরা%20বিনয়ের%20সাথে%20জানাতে%20চাই%20যে%2C%202০২৫-২০২৬%20শিক্ষাবর্ষে%20DVM%20ভর্তি%20পরীক্ষা%20এখনো%20আয়োজন%20করা%20হয়নি।%20আমাদের%20মধ্যে%20অনেকেই%20দ্বিতীয়বার%20(২০২৪-২৫%20সেশন)%20সুযোগ%20নিচ্ছেন%20এবং%20এটিই%20তাদের%20শেষ%20সুযোগ।%0A%0Aআমরা%20যেকোনো%20বিলম্ব%20মেনে%20নিতে%20রাজি%20আছি।%20দেরিতে%20হলেও%20পরীক্ষা%20নেওয়া%20হোক%20—%20এটুকুই%20আমাদের%20একমাত্র%20প্রার্থনা।%0A%0Aআপনার%20দপ্তর%20থেকে%20প্রয়োজনীয়%20পদক্ষেপ%20নেওয়ার%20জন্য%20বিনীত%20অনুরোধ%20জানাচ্ছি।%0A%0Aবিনীত%20নিবেদক%2C%0AHATU%20DVM%20HUNTERS%0Aযশোর%20বিজ্ঞান%20ও%20প্রযুক্তি%20বিশ্ববিদ্যালয়%20ভর্তিচ্ছু%20শিক্ষার্থীবৃন্দ">
+        <span class="mail-icon">📧</span>
+        <div class="mail-info">
+          <div class="mail-label">UGC — গ্রুপ ৬</div>
+          <div class="mail-name">সচিব ও পরিচালক দপ্তর</div>
+          <div class="mail-count">৯টি ইমেইল</div>
+        </div>
+      </a>
+
+      <a class="mail-btn" href="mailto:tahmina@ugc.gov.bd,ugc.nazrul@gmail.com,jahirugc@gmail.com,ashrafugc@gmail.com,amrulugc@gmail.com,mustafizugc@gmail.com,chairman@ugc.gov.bd,omarfaruqueugc@gmail.com,ziaiut96@gmail.com?subject=JUST%20DVM%20ভর্তি%20পরীক্ষা%20আয়োজনের%20আবেদন%20-%20HSTU%20ঝিনাইদহ%20ক্যাম্পাস&body=মহোদয়%2C%0A%0Aআমরা%20যশোর%20বিজ্ঞান%20ও%20প্রযুক্তি%20বিশ্ববিদ্যালয়ের%20(JUST)%20ঝিনাইদহ%20ক্যাম্পাসের%20DVM%20(Doctor%20of%20Veterinary%20Medicine)%20কোর্সের%20ভর্তিচ্ছু%20শিক্ষার্থীবৃন্দ।%0A%0Aআমরা%20বিনয়ের%20সাথে%20জানাতে%20চাই%20যে%2C%202০২৫-২০২৬%20শিক্ষাবর্ষে%20DVM%20ভর্তি%20পরীক্ষা%20এখনো%20আয়োজন%20করা%20হয়নি।%20আমাদের%20মধ্যে%20অনেকেই%20দ্বিতীয়বার%20(২০২৪-২৫%20সেশন)%20সুযোগ%20নিচ্ছেন%20এবং%20এটিই%20তাদের%20শেষ%20সুযোগ।%0A%0Aআমরা%20যেকোনো%20বিলম্ব%20মেনে%20নিতে%20রাজি%20আছি।%20দেরিতে%20হলেও%20পরীক্ষা%20নেওয়া%20হোক%20—%20এটুকুই%20আমাদের%20একমাত্র%20প্রার্থনা।%0A%0Aআপনার%20দপ্তর%20থেকে%20প্রয়োজনীয়%20পদক্ষেপ%20নেওয়ার%20জন্য%20বিনীত%20অনুরোধ%20জানাচ্ছি।%0A%0Aবিনীত%20নিবেদক%2C%0AHATU%20DVM%20HUNTERS%0Aযশোর%20বিজ্ঞান%20ও%20প্রযুক্তি%20বিশ্ববিদ্যালয়%20ভর্তিচ্ছু%20শিক্ষার্থীবৃন্দ">
+        <span class="mail-icon">📧</span>
+        <div class="mail-info">
+          <div class="mail-label">UGC — গ্রুপ ৭</div>
+          <div class="mail-name">চেয়ারম্যান + আইটি বিভাগ</div>
+          <div class="mail-count">৯টি ইমেইল</div>
+        </div>
+      </a>
+
+      <a class="mail-btn" href="mailto:syrawan@gmail.com,nazmul@ugc.gov.bd,nushrat@ugc.gov.bd,imti@ugc.gov.bd,james@ugc.gov.bd,jasimugc@gmail.com,ugcabdussalam@gmail.com,dmsrahman@gmail.com,amirulugc69@gmail.com?subject=JUST%20DVM%20ভর্তি%20পরীক্ষা%20আয়োজনের%20আবেদন%20-%20HSTU%20ঝিনাইদহ%20ক্যাম্পাস&body=মহোদয়%2C%0A%0Aআমরা%20যশোর%20বিজ্ঞান%20ও%20প্রযুক্তি%20বিশ্ববিদ্যালয়ের%20(JUST)%20ঝিনাইদহ%20ক্যাম্পাসের%20DVM%20(Doctor%20of%20Veterinary%20Medicine)%20কোর্সের%20ভর্তিচ্ছু%20শিক্ষার্থীবৃন্দ।%0A%0Aআমরা%20বিনয়ের%20সাথে%20জানাতে%20চাই%20যে%2C%202০২৫-২০২৬%20শিক্ষাবর্ষে%20DVM%20ভর্তি%20পরীক্ষা%20এখনো%20আয়োজন%20করা%20হয়নি।%20আমাদের%20মধ্যে%20অনেকেই%20দ্বিতীয়বার%20(২০২৪-২৫%20সেশন)%20সুযোগ%20নিচ্ছেন%20এবং%20এটিই%20তাদের%20শেষ%20সুযোগ।%0A%0Aআমরা%20যেকোনো%20বিলম্ব%20মেনে%20নিতে%20রাজি%20আছি।%20দেরিতে%20হলেও%20পরীক্ষা%20নেওয়া%20হোক%20—%20এটুকুই%20আমাদের%20একমাত্র%20প্রার্থনা।%0A%0Aআপনার%20দপ্তর%20থেকে%20প্রয়োজনীয়%20পদক্ষেপ%20নেওয়ার%20জন্য%20বিনীত%20অনুরোধ%20জানাচ্ছি।%0A%0Aবিনীত%20নিবেদক%2C%0AHATU%20DVM%20HUNTERS%0Aযশোর%20বিজ্ঞান%20ও%20প্রযুক্তি%20বিশ্ববিদ্যালয়%20ভর্তিচ্ছু%20শিক্ষার্থীবৃন্দ">
+        <span class="mail-icon">📧</span>
+        <div class="mail-info">
+          <div class="mail-label">UGC — গ্রুপ ৮</div>
+          <div class="mail-name">সদস্য দপ্তর + প্রযুক্তি বিভাগ</div>
+          <div class="mail-count">৯টি ইমেইল</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- UNIVERSITY SECTION -->
+  <div class="section">
+    <div class="section-title"><span>🎓</span> বিশ্ববিদ্যালয় কর্তৃপক্ষ (JUST)</div>
+    <div class="btn-grid">
+      <a class="mail-btn" href="mailto:vc@just.edu.bd?subject=DVM%20ভর্তি%20পরীক্ষা%20২০২৫-২০২৬%20আয়োজনের%20জন্য%20আবেদন&body=মহামান্য%20উপাচার্য%20মহোদয়%2C%0A%0Aআমরা%20আপনার%20বিশ্ববিদ্যালয়ের%20ঝিনাইদহ%20ক্যাম্পাসে%20DVM%20কোর্সে%20ভর্তিচ্ছু%20শিক্ষার্থীবৃন্দ।%20আমরা%20বিনীতভাবে%20২০২৫-২০২৬%20শিক্ষাবর্ষের%20DVM%20ভর্তি%20পরীক্ষা%20আয়োজনের%20জন্য%20আবেদন%20জানাচ্ছি।%0A%0Aআমরা%20দেরি%20মেনে%20নিতে%20রাজি%20আছি%2C%20শুধু%20পরীক্ষাটি%20নেওয়া%20হোক।%20আমাদের%20অনেকের%20জন্য%20এটি%20শেষ%20সুযোগ।%0A%0Aআপনার%20সদয়%20হস্তক্ষেপ%20কামনা%20করছি।%0A%0AHATU%20DVM%20HUNTERS">
+        <span class="mail-icon">🏫</span>
+        <div class="mail-info">
+          <div class="mail-label">JUST — উপাচার্য</div>
+          <div class="mail-name">Vice Chancellor, JUST</div>
+          <div class="mail-count">সর্বোচ্চ কর্তৃপক্ষ</div>
+        </div>
+      </a>
+
+      <a class="mail-btn" href="mailto:registrar@just.edu.bd?subject=DVM%20ভর্তি%20পরীক্ষা%20২০২৫-২০২৬%20আয়োজনের%20জন্য%20আবেদন&body=মহোদয়%2C%0A%0Aআমরা%20JUST%20ঝিনাইদহ%20ক্যাম্পাসের%20DVM%20ভর্তিচ্ছু%20শিক্ষার্থীবৃন্দ।%20অনুগ্রহ%20করে%20২০২৫-২০২৬%20শিক্ষাবর্ষের%20DVM%20ভর্তি%20পরীক্ষা%20আয়োজনে%20প্রয়োজনীয়%20পদক্ষেপ%20নিন।%0A%0AHATU%20DVM%20HUNTERS">
+        <span class="mail-icon">📋</span>
+        <div class="mail-info">
+          <div class="mail-label">JUST — রেজিস্ট্রার</div>
+          <div class="mail-name">Registrar, JUST</div>
+          <div class="mail-count">প্রশাসনিক প্রধান</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- GOVERNMENT -->
+  <div class="section">
+    <div class="section-title"><span>🏛️</span> সরকারি দপ্তর</div>
+    <div class="btn-grid">
+
+      <a class="mail-btn" href="mailto:president@bangabhaban.gov.bd?subject=DVM%20ভর্তি%20পরীক্ষা%20আয়োজনের%20জন্য%20আবেদন&body=মহামান্য%20রাষ্ট্রপতি%20মহোদয়%2C%0A%0Aআমরা%20যশোর%20বিজ্ঞান%20ও%20প্রযুক্তি%20বিশ্ববিদ্যালয়ের%20ঝিনাইদহ%20ক্যাম্পাসে%20DVM%20কোর্সে%20ভর্তিচ্ছু%20শিক্ষার্থীবৃন্দ।%0A%0Aবিনীতভাবে%20জানাচ্ছি%20যে%20২০২৫-২০২৬%20শিক্ষাবর্ষে%20DVM%20ভর্তি%20পরীক্ষা%20আজও%20আয়োজিত%20হয়নি।%20আমাদের%20অনেকের%20জন্য%20এটি%20জীবনের%20শেষ%20সুযোগ।%20আপনার%20সদয়%20হস্তক্ষেপ%20কামনা%20করছি।%0A%0AHATU%20DVM%20HUNTERS">
+        <span class="mail-icon">🇧🇩</span>
+        <div class="mail-info">
+          <div class="mail-label">মেইল টু</div>
+          <div class="mail-name">মহামান্য রাষ্ট্রপতি</div>
+          <div class="mail-count">bangabhaban.gov.bd</div>
+        </div>
+      </a>
+
+      <a class="mail-btn" href="mailto:info@moedu.gov.bd?subject=DVM%20ভর্তি%20পরীক্ষা%20আয়োজনের%20জন্য%20আবেদন%20-%20JUST%20ঝিনাইদহ&body=মহোদয়%2C%0A%0Aআমরা%20যশোর%20বিজ্ঞান%20ও%20প্রযুক্তি%20বিশ্ববিদ্যালয়ের%20ঝিনাইদহ%20ক্যাম্পাসে%20DVM%20কোর্সে%20ভর্তিচ্ছু%20শিক্ষার্থীবৃন্দ।%0A%0A২০২৫-২০২৬%20শিক্ষাবর্ষে%20DVM%20ভর্তি%20পরীক্ষা%20এখনো%20আয়োজিত%20হয়নি।%20শিক্ষা%20মন্ত্রণালয় %20থেকে%20প্রয়োজনীয়%20নির্দেশনা%20প্রদানের%20জন্য%20বিনীত%20অনুরোধ%20জানাচ্ছি।%0A%0AHATU%20DVM%20HUNTERS">
+        <span class="mail-icon">📚</span>
+        <div class="mail-info">
+          <div class="mail-label">মেইল টু</div>
+          <div class="mail-name">শিক্ষা মন্ত্রণালয়</div>
+          <div class="mail-count">moedu.gov.bd</div>
+        </div>
+      </a>
+
+      <a class="mail-btn" href="mailto:info@mofl.gov.bd?subject=DVM%20ভর্তি%20পরীক্ষা%20আয়োজনের%20জন্য%20আবেদন&body=মহোদয়%2C%0A%0Aআমরা%20JUST%20ঝিনাইদহ%20ক্যাম্পাসের%20DVM%20ভর্তিচ্ছু%20শিক্ষার্থীবৃন্দ।%20মৎস্য%20ও%20প্রাণিসম্পদ%20মন্ত্রণালয় %20থেকে%20DVM%20ভর্তি%20পরীক্ষা%20আয়োজনে%20সহযোগিতা%20কামনা%20করছি।%0A%0AHATU%20DVM%20HUNTERS">
+        <span class="mail-icon">🐄</span>
+        <div class="mail-info">
+          <div class="mail-label">মেইল টু</div>
+          <div class="mail-name">মৎস্য ও প্রাণিসম্পদ মন্ত্রণালয়</div>
+          <div class="mail-count">mofl.gov.bd</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ADD MORE SECTION PLACEHOLDER -->
+  <div class="section">
+    <div class="section-title"><span>➕</span> শীঘ্রই যোগ হবে</div>
+    <div class="btn-grid">
+      <div class="mail-btn" style="opacity:0.4; cursor:not-allowed;">
+        <span class="mail-icon">⏳</span>
+        <div class="mail-info">
+          <div class="mail-label">আসছে</div>
+          <div class="mail-name">সংসদ সদস্য — খুলনা বিভাগ</div>
+          <div class="mail-count">শীঘ্রই যোগ হবে</div>
+        </div>
+      </div>
+      <div class="mail-btn" style="opacity:0.4; cursor:not-allowed;">
+        <span class="mail-icon">⏳</span>
+        <div class="mail-info">
+          <div class="mail-label">আসছে</div>
+          <div class="mail-name">হাইকোর্ট বিভাগ</div>
+          <div class="mail-count">শীঘ্রই যোগ হবে</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <strong>HATU DVM HUNTERS</strong> — ন্যায্য দাবিতে একতাবদ্ধ<br>
+  যশোর বিজ্ঞান ও প্রযুক্তি বিশ্ববিদ্যালয়, ঝিনাইদহ ক্যাম্পাস | DVM ভর্তি পরীক্ষা ২০২৫-২০২৬<br>
+  <span style="font-size:12px; color:#3a6b4a;">প্রতিটি বাটনে ক্লিক করুন — একসাথে সবার কণ্ঠস্বর পৌঁছে দিন</span>
+</footer>
+
+</body>
+</html>
